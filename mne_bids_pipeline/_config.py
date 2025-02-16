@@ -101,14 +101,14 @@ The runs to process. If `'all'`, will process all runs found in the
 BIDS dataset.
 """
 
-exclude_runs: dict[str, dict[str, list[str]]] | dict[str, list[str]] | None = None
+exclude_runs: dict[str, list[str]] | None = None
 """
 Specify runs to exclude from analysis, for each participant individually.
 
 ???+ example "Example"
     ```python
     exclude_runs = None  # Include all runs.
-    exclude_runs = {'01': {'02': ['01']}}  # Exclude run 02 of subject 01.
+    exclude_runs = {'01': ['02']}  # Exclude run 02 of subject 01.
     ```
 
 ???+ info "Good Practice / Advice"
@@ -116,10 +116,6 @@ Specify runs to exclude from analysis, for each participant individually.
     a run (e.g. too many movements, missing blocks, aborted experiment,
     did not understand the instructions, etc.).
 """
-
-
-exlude_sessions: dict[str, list[str]] | None = None
-
 
 crop_runs: tuple[float, float] | None = None
 """
@@ -1491,11 +1487,6 @@ exceeds this value, the channels won't be interpolated and the epoch will be dro
 # # Sensor-level analysis
 
 # ## Condition contrasts
-metadata_contrasts : Callable | None = None
-"""
-Une fonction qui prend en entrée les Epochs à contraster 
-et qui renvoie les deux groupes d'Epochs par rapport à un contraste personalisé.
-"""
 
 contrasts: Sequence[tuple[str, str] | ArbitraryContrast] = []
 """
