@@ -1491,7 +1491,7 @@ exceeds this value, the channels won't be interpolated and the epoch will be dro
 # # Sensor-level analysis
 
 # ## Condition contrasts
-metadata_contrasts : Callable | None = None
+metadata_contrasts : Callable[[mne.Epochs], BID] | None = None
 """
 Une fonction qui prend en entrée les Epochs à contraster 
 et qui renvoie les deux groupes d'Epochs par rapport à un contraste personalisé.
